@@ -1,9 +1,18 @@
-﻿using System;
+﻿string[] inputs = { "20", "12", "abc", "40" };
+decimal total = 0m;
 
-class Program
+foreach (var text in inputs)
 {
-    static void Main(string[] args)
+    try
     {
-        Console.WriteLine(Tariff.AcPrice().ToString("F2"));
+        total += Reports.ParseKwh(text);
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    finally
+    {
+        Console.WriteLine($"Hittills: {total} kWh");
     }
 }
